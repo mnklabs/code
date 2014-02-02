@@ -1,0 +1,24 @@
+<project name="copy_war" basedir=".">
+
+    <property name="app_name" value="21122013857" />
+	<property name="webapps_loc" value="D:/apps/apache-tomcat-6.0.37/webapps" />		
+	<property name="build_war_dir_loc" value="${basedir}/target" />
+	
+	<property name="tomcat_app_war_loc" value="${webapps_loc}/${app_name}.war" />
+	<property name="tomcat_app_dir_loc" value="${webapps_loc}/${app_name}" />
+	<property name="build_war_loc" value="${build_war_dir_loc}/${app_name}.war"/>
+
+
+	<target name="clean">
+	  <delete dir="${tomcat_app_dir_loc}"/>
+	  <echo> '${tomcat_app_dir_loc}' folder is deleted from tomcat webapps folder </echo>
+	  <delete file="${tomcat_app_war_loc}"/>
+	  <echo> '${tomcat_app_war_loc}' is deleted from tomcat webapps folder </echo>
+	</target>
+		
+	
+	<target name="copy" depends="clean">
+	   <copy file="${build_war_loc}" todir="${webapps_loc}"/>
+	</target>
+
+</project>
